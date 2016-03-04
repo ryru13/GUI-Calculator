@@ -1,0 +1,372 @@
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+
+public class Calculator extends JFrame implements ActionListener{
+
+	private double result = 0, subAns = 0;
+	
+	private JTextField jtf;
+	
+	private String num1 = "", numToString = "";
+	
+	private String tempAns = "";
+	
+	private String operator = "", lastOperator = ""; 
+	
+	private boolean firstSolve = true;
+	
+	public static void main(String[] args) {
+	
+		new Calculator();
+
+	}//End Main
+
+	
+	//Constructor Methods
+	public Calculator(){
+		
+		setLayout(new FlowLayout());
+		
+		JLabel jLabel = new JLabel("GUI Calculator");
+		
+		add(jLabel);
+		
+		jtf = new JTextField(" ", 10);
+		
+		jtf.setEditable(false);
+		
+		add(jtf);
+		
+		JButton addButton = new JButton("+");
+		
+		add(addButton);
+		
+		JButton subButton = new JButton("-");
+
+		add(subButton);
+		
+		JButton mulButton = new JButton("*");
+		
+		add(mulButton);
+		
+		JButton divButton = new JButton("/");
+
+		add(divButton);
+		
+		JButton equalsButton = new JButton("=");
+
+		add(equalsButton);
+		
+		JButton one = new JButton("1");
+
+		add(one);
+
+		JButton two = new JButton("2");
+
+		add(two);
+		
+		JButton three = new JButton("3");
+
+		add(three);
+		
+		JButton four = new JButton("4");
+
+		add(four);
+		
+		JButton five = new JButton("5");
+
+		add(five);
+		
+		JButton six = new JButton("6");
+
+		add(six);
+		
+		JButton seven = new JButton("7");
+
+		add(seven);
+		
+		JButton eight = new JButton("8");
+
+		add(eight);
+		
+		JButton nine = new JButton("9");
+
+		add(nine);
+		
+		JButton zero = new JButton("0");
+		
+		add(zero);
+		
+		JButton clear = new JButton("Clear");
+		
+		add(clear);
+		
+		setVisible(true);
+		
+		setSize(300, 300);
+		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		addButton.addActionListener(this);
+		
+		subButton.addActionListener(this);
+		
+		mulButton.addActionListener(this);
+		
+		divButton.addActionListener(this);
+		
+		equalsButton.addActionListener(this);
+		
+		one.addActionListener(this);
+		
+		two.addActionListener(this);
+		
+		three.addActionListener(this);
+		
+		four.addActionListener(this);
+		
+		five.addActionListener(this);
+		
+		six.addActionListener(this);
+		
+		seven.addActionListener(this);
+		
+		eight.addActionListener(this);
+		
+		nine.addActionListener(this);
+		
+		zero.addActionListener(this);
+		
+		clear.addActionListener(this);
+		
+	}//End Calculator
+	
+	
+	
+	public void actionPerformed(ActionEvent ae) {
+		
+		try{
+			
+			if(ae.getActionCommand().equals("0")){
+				
+				num1 += "0";
+				
+				jtf.setText(num1);
+				
+				tempAns += "0";
+				
+			}if(ae.getActionCommand().equals("1")){
+				
+				num1 += "1";
+				
+				jtf.setText(num1);
+				
+				tempAns += "1";
+				
+			}if(ae.getActionCommand().equals("2")){
+				
+				num1 += "2";
+				
+				jtf.setText(num1);
+				
+				tempAns += "2";
+				
+			}if(ae.getActionCommand().equals("3")){
+				
+				num1 += "3";
+				
+				jtf.setText(num1);
+				
+				tempAns += "3";
+				
+			}if(ae.getActionCommand().equals("4")){
+				
+				num1 += "4";
+				
+				jtf.setText(num1);
+				
+				tempAns += "4";
+				
+			}if(ae.getActionCommand().equals("5")){
+				
+				num1 += "5";
+				
+				jtf.setText(num1);
+				
+				tempAns += "5";
+				
+			}if(ae.getActionCommand().equals("6")){
+				
+				num1 += "6";
+				
+				jtf.setText(num1);
+				
+				tempAns += "6";
+				
+			}if(ae.getActionCommand().equals("7")){
+				
+				num1 += "7";
+				
+				jtf.setText(num1);
+				
+				tempAns += "7";
+				
+			}if(ae.getActionCommand().equals("8")){
+				
+				num1 += "8";
+				
+				jtf.setText(num1);
+				
+				tempAns += "8";
+				
+			}if(ae.getActionCommand().equals("9")){
+				
+				num1 += "9";
+				
+				jtf.setText(num1);
+				
+				tempAns += "9";
+				
+			}if(ae.getActionCommand().equals("+")){
+				
+				operator += "+";
+				
+				if(firstSolve){
+					
+					subAns = Double.parseDouble(tempAns);
+					
+					firstSolve = false;
+				
+				}//End if
+				
+				process();
+				
+			}if(ae.getActionCommand().equals("-")){
+				
+				operator += "-";
+				
+				if(firstSolve){
+					
+					subAns = Double.parseDouble(tempAns);
+					
+					firstSolve = false;
+				
+				}//End if
+
+				process();
+
+			}if(ae.getActionCommand().equals("*")){
+				
+				operator += "*";
+				
+				if(firstSolve){
+					
+					subAns = Double.parseDouble(tempAns);
+					
+					firstSolve = false;
+				
+				}//End if
+				
+				process();
+				
+			}if(ae.getActionCommand().equals("/")){
+				
+				operator += "/";
+				
+				if(firstSolve){
+					
+					subAns = Double.parseDouble(tempAns);
+					
+					firstSolve = false;
+				
+				}//End if
+
+				process();
+			
+			}if(ae.getActionCommand().equals("=")){
+				
+				process();
+				
+				numToString = String.valueOf(result);
+				
+				jtf.setText(numToString);
+			
+				num1 = ""; tempAns = "";
+				
+			}if(ae.getActionCommand().equals("Clear")){
+				
+				num1 = "";
+				
+				jtf.setText(" ");
+			
+				tempAns = "";
+				
+				operator = "";
+				
+				result = 0;
+				
+				subAns = 0;
+				
+				firstSolve = true;
+				
+			}//End nested-if
+		
+		}catch(Exception e){
+			
+			jtf.setText("Error");
+		
+		}//End try-catch
+	
+	}//End actionPerformed
+
+	
+	public void process(){
+		
+		result = Double.parseDouble(tempAns);
+		
+		if(lastOperator.equals("+")){
+			
+			result = subAns + result;
+		
+		}else if(lastOperator.equals("-")){
+			
+			result = subAns - result;
+		
+		}else if(lastOperator.equals("*")){
+			
+			result = subAns * result;
+		
+		}else if(lastOperator.equals("/")){
+			
+			result = subAns / result;
+		
+		}//End if-else
+		
+		lastOperator = operator;
+		
+		subAns = result;
+		
+		operator = "";
+		
+		tempAns = "";
+		
+		num1 = "";
+		
+	}//End process
+	
+}//End Class
